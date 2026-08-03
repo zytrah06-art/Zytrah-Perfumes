@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZYTRAH Luxury Attars | Premium Pure Perfume Oils</title>
+    <meta name="description" content="Discover ZYTRAH Luxury Attars - Handcrafted, long-lasting, alcohol-free pure perfume oils including Royal Oud, Amber Gold, Velvet White Musk, and Rose Elixir.">
+    
+    <!-- CSS Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Google Fonts for Luxury Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Canvas for Floating Perfume Gold Particles -->
+    <canvas id="particle-canvas"></canvas>
+
+    <!-- Navigation Header -->
+    <header class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#hero" class="brand-logo">
+                <span class="logo-text">ZYTRAH</span>
+                <span class="logo-sub">LUXURY ATTARS</span>
+            </a>
+
+            <nav class="nav-links" id="nav-menu">
+                <a href="#hero" class="nav-item">Home</a>
+                <a href="#collection" class="nav-item">Collection</a>
+                <a href="#bestsellers" class="nav-item">Best Sellers</a>
+                <a href="#about" class="nav-item">Our Story</a>
+                <a href="#brand-pages" class="nav-item">Guarantee</a>
+                <a href="#contact" class="nav-item">Contact</a>
+            </nav>
+
+            <div class="nav-actions">
+                <button class="cart-trigger" id="cart-icon-btn" aria-label="Open Shopping Cart">
+                    <span class="cart-icon">🛍️</span>
+                    <span class="cart-badge" id="cart-count-badge">0</span>
+                </button>
+                <div class="hamburger" id="nav-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main>
+
+        <!-- Hero Section with Slider -->
+        <section class="hero-section" id="hero">
+            <div class="hero-slider-wrapper">
+                
+                <!-- Slide 1 -->
+                <div class="hero-slide active" style="background-image: linear-gradient(rgba(0,0,0,0.65), rgba(18,18,18,1)), url('assets/images/royal-oud.jpg');">
+                    <div class="hero-content">
+                        <span class="hero-tagline">ROYAL OUD COLLECTION</span>
+                        <h1 class="hero-title">Experience Pure Royalty</h1>
+                        <p class="hero-subtitle">Handcrafted Cambodian Oud & Rare Aged Resins. Alcohol-Free Perfume Essence.</p>
+                        <div class="hero-btn-group">
+                            <a href="#collection" class="btn-gold-glow">Shop Collection</a>
+                            <a href="#about" class="btn-glass">Discover Craft</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide 2 -->
+                <div class="hero-slide" style="background-image: linear-gradient(rgba(0,0,0,0.65), rgba(18,18,18,1)), url('assets/images/aura-noir.jpg');">
+                    <div class="hero-content">
+                        <span class="hero-tagline">SILK & MUSK ESSENCE</span>
+                        <h1 class="hero-title">Aura Noir</h1>
+                        <p class="hero-subtitle">A dark, seductive fragrance with smoky woods, soft musk, and subtle spices for a bold, elegant character.</p>
+                        <div class="hero-btn-group">
+                            <a href="#collection" class="btn-gold-glow">Explore Musks</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            
+            <!-- Slider Controls -->
+            <div class="slider-dots">
+                <span class="dot active" onclick="switchHeroSlide(0)"></span>
+                <span class="dot" onclick="switchHeroSlide(1)"></span>
+            </div>
+        </section>
+
+        <!-- Featured / Best Sellers Preview Grid -->
+        <section class="featured-section" id="bestsellers">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-subtitle">CURATED EXCELLENCE</span>
+                    <h2 class="section-title">Royal Best Sellers</h2>
+                    <div class="gold-divider"></div>
+                </div>
+                <div class="product-grid" id="featured-grid">
+                    <!-- Dynamic rendering via script.js -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Main Product Collection with Search, Filters & Sorting -->
+        <section class="catalog-section" id="collection">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-subtitle">30 SIGNATURE ESSENCES</span>
+                    <h2 class="section-title">The Complete Vault</h2>
+                    <div class="gold-divider"></div>
+                </div>
+
+                <!-- Control Bar: Search & Sorting -->
+                <div class="control-bar glass-panel">
+                    <div class="search-box">
+                        <span class="search-icon">🔍</span>
+                        <input type="text" id="search-input" placeholder="Search attar by name, scent notes, or category...">
+                    </div>
+
+                    <div class="filter-dropdowns">
+                        <div class="filter-group">
+                            <label for="sort-select">Sort By:</label>
+                            <select id="sort-select" class="custom-select">
+                                <option value="featured">Featured First</option>
+                                <option value="bestseller">Best Sellers</option>
+                                <option value="price-low">Price: Low to High</option>
+                                <option value="price-high">Price: High to Low</option>
+                                <option value="alphabetical">Alphabetical (A-Z)</option>
+                            </select>
+                        </div>
+
+                        <div class="filter-group">
+                            <label for="availability-filter">Filter:</label>
+                            <select id="availability-filter" class="custom-select">
+                                <option value="all">All Products</option>
+                                <option value="bestsellers">Best Sellers Only</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Category Pills Navigation -->
+                <div class="category-pills-wrapper" id="category-pills">
+                    <!-- Dynamic pills rendered via script.js -->
+                </div>
+
+                <!-- Range & Size Filters -->
+                <div class="advanced-filters glass-panel">
+                    <div class="range-box">
+                        <label>Max Price: <span id="price-display">₹400</span></label>
+                        <input type="range" id="price-range" min="20" max="400" value="400" step="5">
+                    </div>
+
+                    <button class="btn-gold-outline" onclick="resetAllFilters()">Reset All Filters</button>
+                </div>
+
+                <!-- Main Products Grid Container -->
+                <div class="product-grid" id="product-grid">
+                    <!-- Dynamic rendering via script.js -->
+                </div>
+            </div>
+        </section>
+
+        <!-- About Preview / Craftsmanship -->
+        <section class="about-section" id="about">
+            <div class="container about-grid">
+                <div class="about-text-col">
+                    <span class="section-subtitle">HERITAGE OF PERFUMERY</span>
+                    <h2 class="section-title">The Art of ZYTRAH</h2>
+                    <div class="gold-divider-left"></div>
+                    <p>At ZYTRAH, we craft alcohol-free perfume oils using age-old steam distillation and traditional copper degs. Every drop represents pure concentrate harvested from wild agarwood trees, hand-picked rose petals, and precious golden amber resins.</p>
+                    <ul class="craft-features">
+                        <li>✨ 100% Pure & Alcohol-Free Concentrated Oils</li>
+                        <li>🌿 Sustainably Sourced Natural Ingredients</li>
+                        <li>⏳ Aged in Oak Casks for Exceptional Projection</li>
+                        <li>👑 Hand-poured in Crystal Glass Bottles</li>
+                    </ul>
+                </div>
+                <div class="about-img-col glass-card">
+                    <img src="assets/images/mahzim-elite.jpg" alt="ZYTRAH Heritage Attar" onerror="this.onerror=null; this.src='https://via.placeholder.com/500x600/1a1a1a/d4af37?text=ZYTRAH+Heritage';">
+                </div>
+            </div>
+        </section>
+
+        <!-- Brand Pages: Guarantees & Policy Showcase -->
+        <section class="brand-pages-section" id="brand-pages">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-subtitle">OUR PROMISE TO YOU</span>
+                    <h2 class="section-title">Trust & Excellence</h2>
+                    <div class="gold-divider"></div>
+                </div>
+
+                <div class="policy-grid">
+                    <div class="policy-card glass-panel">
+                        <div class="policy-icon">📜</div>
+                        <h3>Authenticity Guarantee</h3>
+                        <p>We source 100% pure agarwood from Assam and Cambodia. Zero synthetic boosters or dilution powders.</p>
+                    </div>
+
+                    <div class="policy-card glass-panel">
+                        <div class="policy-icon">🎁</div>
+                        <h3>Premium Packaging</h3>
+                        <p>Each roller attar is enclosed in velvet-lined gift casing with a golden wax seal stamp.</p>
+                    </div>
+
+                    <div class="policy-card glass-panel">
+                        <div class="policy-icon">🛡️</div>
+                        <h3>Satisfaction Guarantee</h3>
+                        <p>Enjoy our 30-day scent match promise. If a scent doesn't compliment your skin, exchange it hassle-free.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact & Location Section -->
+        <section class="contact-section" id="contact">
+            <div class="container contact-grid">
+                <div class="contact-form-box glass-panel">
+                    <h3>Inquire with Our Scent Master</h3>
+                    <p>Have questions about notes, custom blends, or wholesale orders?</p>
+                    
+                    <form id="contact-form" onsubmit="event.preventDefault(); window.cartManager.showToast('Inquiry sent! Our concierge will contact you.');">
+                        <div class="input-field">
+                            <input type="text" placeholder="Your Name" required>
+                        </div>
+                        <div class="input-field">
+                            <input type="email" placeholder="Your Email" required>
+                        </div>
+                        <div class="input-field">
+                            <textarea rows="4" placeholder="Your Message or Custom Perfume Request" required></textarea>
+                        </div>
+                        <button type="submit" class="btn-gold-solid">Send Message</button>
+                    </form>
+                </div>
+
+                <div class="contact-info-box">
+                    <span class="section-subtitle">VISIT OUR BOUTIQUE</span>
+                    <h2>ZYTRAH Concierge</h2>
+                    <p>📍 Furfura Sharif, Hooghly</p>
+                    <p>📞 +91 8167094269</p>
+                    <p>📞 +91 95649 60161</p>
+                    <p>✉️ zytrah06@gmail.com</p>
+                    
+                    <!-- Map Frame Mockup -->
+                  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7358.893613616813!2d88.12598728727126!3d22.748794011737658!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f87dabadd95bf3%3A0x1a29873e9b36f9b1!2sFurfura%20Sharif%2C%20West%20Bengal%20712706!5e0!3m2!1sen!2sin!4v1785517384014!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Slide-Out Shopping Cart Drawer -->
+    <div class="cart-drawer-overlay" id="cart-drawer-overlay"></div>
+    <aside class="cart-drawer" id="cart-drawer">
+        <div class="cart-drawer-header">
+            <h3>Your Scent Vault</h3>
+            <button class="close-btn" id="close-cart-btn">✕</button>
+        </div>
+
+        <div class="cart-drawer-body" id="cart-drawer-items">
+            <!-- Dynamic items rendered via cart.js -->
+        </div>
+
+        <div class="cart-drawer-footer">
+            <div class="coupon-section" id="cart-coupon-status">
+                <!-- Dynamic coupon input via cart.js -->
+            </div>
+
+            <div class="bill-row">
+                <span>Subtotal</span>
+                <strong id="cart-subtotal">₹0.00</strong>
+            </div>
+            <div class="bill-row">
+                <span>Shipping</span>
+                <strong id="cart-shipping">₹0.00</strong>
+            </div>
+            <div class="bill-row">
+                <span>Discount</span>
+                <strong id="cart-discount" class="text-gold">-₹0.00</strong>
+            </div>
+            <div class="bill-row grand-total-row">
+                <span>Grand Total</span>
+                <strong id="cart-grand-total">₹0.00</strong>
+            </div>
+
+            <button class="btn-gold-glow btn-block" onclick="document.getElementById('checkout-modal').classList.add('open'); cartManager.closeCart();">
+                Proceed to Checkout
+            </button>
+        </div>
+    </aside>
+
+    <!-- Checkout Modal -->
+    <div class="modal-overlay" id="checkout-modal">
+        <div class="modal-card checkout-modal-card glass-panel">
+            <div class="modal-header">
+                <h2>Complete Your Order</h2>
+                <button class="close-btn" onclick="document.getElementById('checkout-modal').classList.remove('open')">✕</button>
+            </div>
+            
+            <form id="checkout-form" class="checkout-form">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Full Name *</label>
+                        <input type="text" id="checkout-name" placeholder="John Doe" required>
+                    </div>
+                    <div class="form-group">
+                        <label>WhatsApp Number *</label>
+                        <input type="tel" id="checkout-phone" placeholder="+91 9876543210" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Email Address *</label>
+                        <input type="email" id="checkout-email" placeholder="john@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label>House / Flat / Suite *</label>
+                        <input type="text" id="checkout-house" placeholder="Villa 12B" required>
+                    </div>
+                    <div class="form-group full-width">
+                        <label>Street Address *</label>
+                        <input type="text" id="checkout-address" placeholder="Royal Palms Avenue" required>
+                    </div>
+                    <div class="form-group">
+                        <label>City *</label>
+                        <input type="text" id="checkout-city" placeholder="Dubai / Mumbai" required>
+                    </div>
+                    <div class="form-group">
+                        <label>State *</label>
+                        <input type="text" id="checkout-state" placeholder="State / Province" required>
+                    </div>
+                    <div class="form-group">
+                        <label>PIN / Postal Code *</label>
+                        <input type="text" id="checkout-pin" placeholder="110001" required>
+                    </div>
+                    <div class="form-group full-width">
+                        <label>Delivery Instructions</label>
+                        <input type="text" id="checkout-notes" placeholder="e.g., Leave with concierge">
+                    </div>
+                </div>
+
+                <div class="payment-selection">
+                    <h3>Payment Option</h3>
+                    <div class="payment-radios">
+                        <label class="radio-card">
+                            <input type="radio" name="payment_method" value="whatsapp" checked>
+                            <span>WhatsApp Direct Confirm</span>
+                        </label>
+                        <label class="radio-card">
+                            <input type="radio" name="payment_method" value="upi">
+                            <span>UPI Transfer</span>
+                        </label>
+                        <label class="radio-card">
+                            <input type="radio" name="payment_method" value="cod">
+                            <span>Cash on Delivery</span>
+                        </label>
+                    </div>
+
+                    <div id="upi-details-panel" class="payment-notice" style="display:none;">
+                        <p> Scan UPI QR code or transfer to <strong>zytrah@upi</strong> after confirming via WhatsApp.</p>
+                    </div>
+                    <div id="cod-details-panel" class="payment-notice" style="display:none;">
+                        <p>💵 Pay cash upon delivery. A verification call will be placed to your WhatsApp number.</p>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-gold-solid btn-block">Place Order & Open WhatsApp</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Quick View Product Modal -->
+    <div class="modal-overlay" id="quickview-modal">
+        <div class="modal-card glass-panel">
+            <button class="close-btn" onclick="closeModal()">✕</button>
+            <div id="modal-body-content">
+                <!-- Dynamic Quick View content from script.js -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Order Success Confirmation Modal -->
+    <div class="modal-overlay" id="order-success-modal">
+        <div class="modal-card success-card glass-panel text-center">
+            <div class="success-icon">👑</div>
+            <h2>Order Generated!</h2>
+            <p>Your luxury attar order details have been compiled into WhatsApp.</p>
+            <p>Our scent concierge will confirm your dispatch shortly.</p>
+            <button class="btn-gold-solid" onclick="document.getElementById('order-success-modal').classList.remove('open')">Close Window</button>
+        </div>
+    </div>
+
+    <!-- Floating WhatsApp Instant Button -->
+    <a href="https://wa.me/918167094269?text=Hello%20ZYTRAH%20Concierge,%20I%20have%20a%20question%20about%20your%20attars." 
+       target="_blank" 
+       class="floating-whatsapp" 
+       aria-label="Chat on WhatsApp">
+        💬
+    </a>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div class="footer-col">
+                <div class="brand-logo">
+                    <span class="logo-text">ZYTRAH</span>
+                    <span class="logo-sub">LUXURY ATTARS</span>
+                </div>
+                <p>Pure, concentrated, alcohol-free artisanal perfume oils crafted for royalty.</p>
+            </div>
+
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#hero">Home</a></li>
+                    <li><a href="#collection">Collection Vault</a></li>
+                    <li><a href="#bestsellers">Best Sellers</a></li>
+                    <li><a href="#about">Our Story</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Categories</h4>
+                <ul>
+                    <li><a href="#collection" onclick="filterByCategory('Oud')">Oud</a></li>
+                    <li><a href="#collection" onclick="filterByCategory('Musk')">Musk</a></li>
+                    <li><a href="#collection" onclick="filterByCategory('Amber')">Amber</a></li>
+                    <li><a href="#collection" onclick="filterByCategory('Rose')">Rose</a></li>
+                    <li><a href="#collection" onclick="filterByCategory('Luxury')">Luxury Specials</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Stay Connected</h4>
+                <p>Subscribe for private releases & luxury offers.</p>
+                <form class="newsletter-form" onsubmit="event.preventDefault(); window.cartManager.showToast('Subscribed to VIP Vault!');">
+                    <input type="email" placeholder="Enter email address" required>
+                    <button type="submit" class="btn-gold-solid">Join</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 ZYTRAH Luxury Attars. All rights reserved. Crafted for Microsoft Edge & GitHub Pages.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript Files (Loaded in correct dependency order) -->
+    <script src="products.js"></script>
+    <script src="cart.js"></script>
+    <script src="checkout.js"></script>
+    <script src="script.js"></script>
+    <script src="animations.js"></script>
+</body>
+</html>
